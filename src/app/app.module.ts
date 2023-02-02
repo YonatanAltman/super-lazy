@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {RouterModule, Routes} from "@angular/router";
-import {LayoutModule} from "@super-lazy/layout";
+import {LayoutModule} from '@super-lazy/layout';
 
 const routes: Routes = [
     {

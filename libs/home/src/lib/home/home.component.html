@@ -1,1 +1,7 @@
-<p>home works!</p>
+<ng-container *ngIf="user$|async as user">
+
+    <h2>{{user.lastName }}, {{user.firstName }} </h2>
+    <div class="img">
+        <img [src]="user.image" alt="">
+    </div>
+</ng-container>
