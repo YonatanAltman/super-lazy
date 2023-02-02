@@ -1,0 +1,15 @@
+<div class="wrapper">
+
+<div class="header"></div>
+<div class="side-bar">
+    <a *ngFor="let n of navs"
+            [routerLink]="n.routerLink">{{n.label}}</a>
+
+
+</div>
+<div class="content">
+
+
+    <ng-content></ng-content>
+</div>
+</div>
