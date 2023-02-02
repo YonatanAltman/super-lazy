@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
-import pptxgen from "pptxgenjs";
+import {loadPptxLib} from "./import.pptx";
+// import pptxgen from "pptxgenjs";
+// lazy-loaded libraries.
+declare let pptxgenjs: any;
 
 @Component({
     selector: 'super-lazy-pptx',
@@ -8,13 +11,15 @@ import pptxgen from "pptxgenjs";
 })
 export class PptxComponent {
     exportToPptx() {
-// 1. Create a Presentation
-        let pres = new pptxgen();
+        loadPptxLib().subscribe(()=>{
 
-// 2. Add a Slide to the presentation
+        // 1. Create a Presentation
+        let pres = new pptxgenjs();
+
+        // 2. Add a Slide to the presentation
         let slide = pres.addSlide();
 
-// 3. Add 1+ objects (Tables, Shapes, etc.) to the Slide
+        // 3. Add 1+ objects (Tables, Shapes, etc.) to the Slide
         slide.addText("Hello World from PptxGenJS...", {
             x: 1.5,
             y: 1.5,
@@ -23,7 +28,8 @@ export class PptxComponent {
             align: pres.AlignH.center,
         });
 
-// 4. Save the Presentation
+        // 4. Save the Presentation
         pres.writeFile({fileName: "Sample Presentation.pptx"});
+        })
     }
 }
